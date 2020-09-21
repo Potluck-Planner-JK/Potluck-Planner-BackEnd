@@ -1,9 +1,9 @@
 exports.up = async function (knex) {
   await knex.schema.createTable("potlucks", (table) => {
-    table.incraments();
-    table.text("username").unique().notNullable();
-    table.text("password").notNullable();
-    table.text("date/time").notNullable();
+    table.increments();
+    table.text("username", 50).unique().notNullable();
+    table.text("password", 50).notNullable();
+    table.text("date").notNullable();
     table.text("location").notNullable();
   });
 };

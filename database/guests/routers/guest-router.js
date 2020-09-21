@@ -1,9 +1,10 @@
 let express = require("express");
 let model = require("../models/guest-model");
+let restrict = require("../../restrict")
 let router = express.Router();
 
-//restrict
-router.get("/guests", async (req, res, next) => {
+//restricted
+router.get("/guests", restrict.restrict(), async (req, res, next) => {
   try {
     res.json(await model.findGuests());
   } catch (err) {
@@ -19,32 +20,39 @@ router.get("/guests", async (req, res, next) => {
 //   }
 // });
 
-//restrict
-router.post("/guest", async (req, res, next) => {
+//restricted
+router.post("/guest", restrict.restrict(), async (req, res, next) => {
   try {
-    let guestId = req.params.id;
-    let guest = { ...req.body, id: guestId };
+    let { name, email, item} = req.body;
 
-    model.addGuest(guest);
-    then((guest) => {
-      res.status(201).json({
-        message: "Guest Created",
-      });
+    // let guest = await model.findBy({ name }).first();
+
+    // if (guest) {
+    //   return res.status(409).json({
+    //     message: "Name is Already Taken",
+    //   });
+    // }
+
+    let newGuest = await model.addGuest({
+      name,
+      email,
+      item
     });
+
+    res.status(201).json(newGuest);
   } catch (err) {
-    console.log("Error:", err);
-    res.status(500).json({ error: "There was an error creating a potluck." });
+    next(err);
   }
 });
 
-//restrict
-router.delete("/guests/:id", async (req, res, next) => {
+//restricted
+router.delete("/guests/:id", restrict.restrict(), async (req, res, next) => {
   try {
     model
       .deleteGuest(req.params.id)
       .then(() => {
         res.status(200).json({
-          message: "User Deleted",
+          message: "Guest Deleted",
         });
       })
       .catch(next);
