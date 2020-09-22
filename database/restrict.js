@@ -7,8 +7,6 @@ function restrict() {
     };
     try {
 
-    //   let token = req.headers.authorization;
-
     let token = req.cookies.token;
 
     console.log(req.cookies.token, "FROM RESTRICT MIDDLEWARE")

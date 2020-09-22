@@ -1,9 +1,9 @@
 // Update with your config settings.
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/auth";
+const pgConnection =
+  process.env.DATABASE_URL || "postgresql://postgres@localhost/auth";
 module.exports = {
-
   development: {
-    client: 'sqlite3',
+    client: "sqlite3",
     useNullAsDefault: true,
     connection: {
       filename: "./database/data.db3",
@@ -22,25 +22,25 @@ module.exports = {
   },
 
   staging: {
-    client: 'sqlite3',
+    client: "sqlite3",
     connection: {
       filename: "./database/data.db3",
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: "knex_migrations",
+    },
   },
 
   production: {
-    client: 'pg',
+    client: "sqlite3",
     useNullAsDefault: true,
-    connection: 
-      pgConnection
-   ,
+    connection: {
+      filename: "./database/data.db3",
+    },
     migrations: {
       directory: "./database/migrations",
     },
@@ -48,8 +48,8 @@ module.exports = {
       directory: "./database/seeds",
     },
     pool: {
-min: 2,
-max:10,
+      min: 2,
+      max: 10,
     },
-  }
+  },
 };
