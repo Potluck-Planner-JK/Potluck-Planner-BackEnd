@@ -1,5 +1,7 @@
 # Potluck-Planner-BackEnd
 
+https://potluck-planner-webpt16.herokuapp.com/
+
 # Endpoints
 | Request | URL | Description |
 | ------- | --- | ----------- |
