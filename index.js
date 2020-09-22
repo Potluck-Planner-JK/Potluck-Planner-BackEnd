@@ -1,9 +1,9 @@
 require("dotenv/config")
 // let cookieParser = require("cookie-parser")
 
-let server = require("./server/server");
+let server = require("./server");
 
-let port = process.env.PORT || 8472;
+let PORT = process.env.PORT || 8472;
 
 // server.use(cookieParser())
 
@@ -12,8 +12,8 @@ server.get("/", (req, res) => {
 });
 console.log(process.env.PORT)
 
-server.listen(port, () =>
+server.listen(PORT, () =>
   console.log(`
-  ▂▃▅▇█▓▒░ ➖ Server Running on Port ${port} ➖  ░▒▓█▇▅▃▂
+  ▂▃▅▇█▓▒░ ➖ Server Running on Port ${PORT} ➖  ░▒▓█▇▅▃▂
   `)
 );
