@@ -20,9 +20,9 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
+    "server": "nodemon",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon"
+    "test": "cross-env DB_ENV=testing jest --verbose --watch"
   },
   "repository": {
     "type": "git",
