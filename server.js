@@ -3,8 +3,8 @@ let cors = require("cors");
 let helmet = require("helmet");
 
 let cookieParser = require("cookie-parser");
-let userRouter = require("../database/potluck/routers/user-router");
-let guestRouter = require("../database/guests/routers/guest-router");
+let userRouter = require("./database/potluck/routers/user-router");
+let guestRouter = require("./database/guests/routers/guest-router");
 
 let server = express();
 
