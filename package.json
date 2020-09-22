@@ -1,3 +1,4 @@
+
 {
   "name": "Potluck-Planner-BackEnd",
   "version": "1.0.0",
@@ -19,7 +20,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node --require dotenv/config index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js"
   },

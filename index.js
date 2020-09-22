@@ -10,6 +10,7 @@ let port = process.env.PORT || 8472;
 server.get("/", (req, res) => {
   res.send("Server Running");
 });
+console.log(process.env.PORT)
 
 server.listen(port, () =>
   console.log(`
