@@ -12,6 +12,12 @@ function findBy(filter) {
   return data("guests").select("id", "name", "email", "item").where(filter);
 }
 
+function updateGuest(id, changes) {
+	return data("guests")
+		.where({ id })
+		.update(changes)
+}
+
 function deleteGuest(id) {
   return data("guests").where({ id }).del();
 }
@@ -20,5 +26,6 @@ module.exports = {
   findGuests,
   addGuest,
   findBy,
-  deleteGuest,
+  updateGuest,
+  deleteGuest
 };

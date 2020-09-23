@@ -64,11 +64,9 @@ router.post("/login", async (req, res, next) => {
     res.cookie("token", token);
 
     console.log(token, "FROM LOGIN ROUTER")
-    // console.log(req.cookie.token)
 
     res.json({
-      message: `Welcome ${user.username}!`,
-      // token
+      message: `Welcome ${user.username}!`
     });
   } catch (err) {
     next(err);
