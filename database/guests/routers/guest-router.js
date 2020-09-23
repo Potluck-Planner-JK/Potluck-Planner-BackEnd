@@ -12,26 +12,10 @@ router.get("/guests", restrict.restrict(), async (req, res, next) => {
   }
 });
 
-// //restrict
-// router.get("/guest/:id", async (req, res, next) => {
-//   try {
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 //restricted
 router.post("/guest", restrict.restrict(), async (req, res, next) => {
   try {
     let { name, email, item} = req.body;
-
-    // let guest = await model.findBy({ name }).first();
-
-    // if (guest) {
-    //   return res.status(409).json({
-    //     message: "Name is Already Taken",
-    //   });
-    // }
 
     let newGuest = await model.addGuest({
       name,
@@ -43,6 +27,20 @@ router.post("/guest", restrict.restrict(), async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+//restrict
+router.put("/guests/:id", restrict.restrict(), (req, res) => {
+    
+  const id = req.params.id
+  model.updateGuest(id, req.body)
+      .then(guest => {
+          res.status(200).json({ message: "Successfully Updated Guest", guest })
+      })
+      .catch(err => {
+          console.log(err, "Error: ")
+          res.status(500).json({ message: "Could Not Update Guest" })
+      })
 });
 
 //restricted
