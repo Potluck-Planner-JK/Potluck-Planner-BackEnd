@@ -9,7 +9,7 @@ function restrict() {
 
     let token = req.cookies.token;
 
-    console.log(req.cookies.token, "FROM RESTRICT MIDDLEWARE")
+    console.log("Routed (From Restrict Middleware)")
 
       if (!token) {
         return res.status(401).json(error);

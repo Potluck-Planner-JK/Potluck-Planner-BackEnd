@@ -63,10 +63,10 @@ router.post("/login", async (req, res, next) => {
 
     res.cookie("token", token);
 
-    console.log(token, "FROM LOGIN ROUTER")
+    console.log(token, "FROM LOGIN ROUTER");
 
     res.json({
-      message: `Welcome ${user.username}!`
+      message: `Welcome ${user.username}!`,
     });
   } catch (err) {
     next(err);
@@ -80,6 +80,22 @@ router.get("/potlucks", restrict.restrict(), async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+//restrict
+router.put("/potlucks/:id", restrict.restrict(), (req, res) => {
+  const id = req.params.id;
+  model
+    .updatePotluck(id, req.body)
+    .then((potluck) => {
+      res
+        .status(200)
+        .json({ message: "Successfully Updated Potluck", potluck });
+    })
+    .catch((err) => {
+      console.log(err, "Error: ");
+      res.status(500).json({ message: "Could Not Update Potluck" });
+    });
 });
 
 //restrict

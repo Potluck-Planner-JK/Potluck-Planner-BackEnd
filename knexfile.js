@@ -50,4 +50,15 @@ module.exports = {
       max: 10,
     },
   },
+
+  testing: {
+    client: "sqlite3",
+    connection: { filename: "./database/testing.db3" },
+    useNullAsDefault: true,
+    migrations: {
+      directory: "./database/migrations",
+      tableName: "dbmigrations",
+    },
+    seeds: { directory: "./database/seeds" },
+  },
 };
