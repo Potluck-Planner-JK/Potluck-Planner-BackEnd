@@ -8,7 +8,8 @@ https://potluck-planner-webpt16.herokuapp.com/
 | POST | /register | register a potluck |
 | POST | /login | login to a potluck |
 | POST | /guest | add a new guest to the potluck (RESTRICTED) |
-| PUT | /guests/:id | edit guest info |
+| PUT | /guests/:id | edit guest info (RESTRICTED)|
+| PUT | /potlucks/:id | edit potluck info (RESTRICTED)|
 | DELETE | /guests/:id | deletes existing guest (RESTRICTED)|
 | DELETE | /potlucks/:id | deletes existing potluck (RESTRICTED)|
 | GET | /guests | get a list of all guests (RESTRICTED) |
