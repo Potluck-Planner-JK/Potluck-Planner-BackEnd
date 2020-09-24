@@ -1,4 +1,3 @@
-
 {
   "name": "Potluck-Planner-BackEnd",
   "version": "1.0.0",
@@ -17,11 +16,14 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "nodemon": "^2.0.4"
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   },
   "scripts": {
+    "test": "cross-env NODE_ENV=testing jest",
     "start": "node index.js",
-    "server": "nodemon server.js"
+    "server": "cross-env NODE_ENV=development nodemon server.js"
   },
   "repository": {
     "type": "git",

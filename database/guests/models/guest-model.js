@@ -1,4 +1,4 @@
-let data = require("../../config")
+let data = require("../../config");
 
 function findGuests() {
   return data("guests");
@@ -13,9 +13,7 @@ function findBy(filter) {
 }
 
 function updateGuest(id, changes) {
-	return data("guests")
-		.where({ id })
-		.update(changes)
+  return data("guests").where({ id }).update(changes);
 }
 
 function deleteGuest(id) {
@@ -27,5 +25,5 @@ module.exports = {
   addGuest,
   findBy,
   updateGuest,
-  deleteGuest
+  deleteGuest,
 };

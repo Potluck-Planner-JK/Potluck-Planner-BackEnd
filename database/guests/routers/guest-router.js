@@ -1,6 +1,6 @@
 let express = require("express");
 let model = require("../models/guest-model");
-let restrict = require("../../restrict")
+let restrict = require("../../restrict");
 let router = express.Router();
 
 //restricted
@@ -15,12 +15,12 @@ router.get("/guests", restrict.restrict(), async (req, res, next) => {
 //restricted
 router.post("/guest", restrict.restrict(), async (req, res, next) => {
   try {
-    let { name, email, item} = req.body;
+    let { name, email, item } = req.body;
 
     let newGuest = await model.addGuest({
       name,
       email,
-      item
+      item,
     });
 
     res.status(201).json(newGuest);
@@ -31,16 +31,16 @@ router.post("/guest", restrict.restrict(), async (req, res, next) => {
 
 //restrict
 router.put("/guests/:id", restrict.restrict(), (req, res) => {
-    
-  const id = req.params.id
-  model.updateGuest(id, req.body)
-      .then(guest => {
-          res.status(200).json({ message: "Successfully Updated Guest", guest })
-      })
-      .catch(err => {
-          console.log(err, "Error: ")
-          res.status(500).json({ message: "Could Not Update Guest" })
-      })
+  const id = req.params.id;
+  model
+    .updateGuest(id, req.body)
+    .then((guest) => {
+      res.status(200).json({ message: "Successfully Updated Guest", guest });
+    })
+    .catch((err) => {
+      console.log(err, "Error: ");
+      res.status(500).json({ message: "Could Not Update Guest" });
+    });
 });
 
 //restricted
