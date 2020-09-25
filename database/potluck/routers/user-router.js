@@ -34,8 +34,8 @@ router.post("/login", async (req, res, next) => {
     const { username, password } = req.body;
     const user = await model.findBy({ username }).first();
 
-    console.log(user.username, user.password, "Stored User");
-    console.log(username, password, "User inputs");
+    // console.log(user.username, user.password, "Stored User");
+    // console.log(username, password, "User inputs");
 
     if (!user) {
       return res.status(401).json({
